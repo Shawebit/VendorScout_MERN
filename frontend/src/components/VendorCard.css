@@ -1,0 +1,57 @@
+.vendor-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  position: relative;
+  isolation: isolate;
+}
+
+.vendor-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(120deg, transparent 0%, rgba(0, 0, 0, 0.02) 50%, transparent 100%);
+  opacity: 0;
+  z-index: -1;
+}
+
+.vendor-card-content {
+  padding: var(--spacing-6);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.vendor-card-content-inner {
+  flex: 1;
+}
+
+.vendor-name {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-2);
+  color: var(--color-black);
+  letter-spacing: -0.025em;
+}
+
+.vendor-cuisine {
+  margin-bottom: var(--spacing-2);
+  color: var(--color-medium-grey);
+  font-size: var(--font-size-sm);
+}
+
+.vendor-pincode {
+  margin-bottom: var(--spacing-4);
+  color: var(--color-medium-grey);
+  font-size: var(--font-size-sm);
+  margin-top: auto;
+}
+
+.vendor-view-btn {
+  width: 100%;
+  margin-top: auto;
+}
