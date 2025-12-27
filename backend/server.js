@@ -20,7 +20,15 @@ morgan.format('clean', ':method :url :status :response-time ms');
 
 // Middleware
 app.use(helmet()); // Security headers
-app.use(cors()); // Enable CORS
+
+// CORS configuration for production
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions)); // Enable CORS
+
 app.use(morgan('clean')); // Clean logging
 app.use(express.json()); // Parse JSON bodies
 
