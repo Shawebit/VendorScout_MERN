@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create an axios instance
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'https://vendorscout-backend.onrender.com/api', // Replace with your actual Render backend URL
+  baseURL: import.meta.env.VITE_API_URL || 'https://vendorscout.onrender.com', // Backend URL without /api suffix
   headers: {
     'Content-Type': 'application/json',
   },
