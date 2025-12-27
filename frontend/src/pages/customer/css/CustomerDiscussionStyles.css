@@ -1,0 +1,412 @@
+/* ===== CUSTOMER DISCUSSION PAGE - PROPER IMPLEMENTATION ===== */
+/* Uses CustomerDashboardStyles.css for navbar and base layout */
+
+/* Import shared styles */
+@import './CustomerDashboardStyles.css';
+
+/* ===== FORM SECTION ===== */
+.form-section {
+  padding: 4rem 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.form-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section-subtitle {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #000000;
+  margin: 0 0 3rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-align: center;
+}
+
+/* ===== FORM LAYOUT ===== */
+.discussion-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.input-label {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.text-input,
+.text-area {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #000000;
+  font-size: 0.875rem;
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: 300;
+  font-family: inherit;
+  line-height: 1.5;
+  transition: border-color 0.2s;
+}
+
+.text-input:focus,
+.text-area:focus {
+  outline: 2px solid #000000;
+  outline-offset: -2px;
+}
+
+.text-input::placeholder,
+.text-area::placeholder {
+  color: #999999;
+}
+
+.text-area {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+/* ===== FORM ACTIONS ===== */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.char-counter {
+  font-size: 0.75rem;
+  color: #666666;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+.submit-btn {
+  padding: 1rem 3rem;
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.submit-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* ===== COMMENTS SECTION ===== */
+.comments-section {
+  padding: 4rem 0;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.sort-dropdown {
+  padding: 0.875rem 3rem 0.875rem 1.25rem;
+  border: 1px solid #000000;
+  background: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #000000;
+  cursor: pointer;
+  appearance: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: border-color 0.2s;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23000000' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+}
+
+.sort-dropdown:focus {
+  outline: 2px solid #000000;
+  outline-offset: -2px;
+}
+
+/* ===== COMMENTS GRID ===== */
+.comments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 2rem;
+}
+
+/* ===== COMMENT CARD ===== */
+.comment-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e5;
+  padding: 2rem;
+  transition: border-color 0.2s;
+}
+
+.comment-card:hover {
+  border-color: #000000;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.author-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.author-name {
+  font-weight: 400;
+  color: #000000;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.meta-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.timestamp,
+.location {
+  font-size: 0.75rem;
+  color: #666666;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.action-btn {
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  padding: 0.625rem;
+  color: #666666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  width: 36px;
+  height: 36px;
+}
+
+.action-btn:hover {
+  background-color: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+.like-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  padding: 0 1rem;
+  cursor: pointer;
+  font-weight: 400;
+  color: #000000;
+  transition: all 0.2s;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  height: 36px;
+}
+
+.like-btn:hover:not(.liked) {
+  border-color: #000000;
+}
+
+.like-btn.liked {
+  background-color: #000000;
+  border-color: #000000;
+  color: #ffffff;
+}
+
+.card-content {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: #000000;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-weight: 300;
+}
+
+/* ===== STATUS MESSAGE ===== */
+.status-message {
+  text-align: center;
+  padding: 6rem 2rem;
+}
+
+.status-message h4 {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin: 0 0 1rem 0;
+}
+
+.status-message p {
+  font-size: 0.9375rem;
+  color: #666666;
+  font-weight: 300;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ===== ERROR BANNER ===== */
+.error-banner {
+  background: #fff5f5;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid #ffcdd2;
+  border-left: 4px solid #d32f2f;
+}
+
+.error-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.error-text {
+  font-size: 0.875rem;
+  color: #d32f2f;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1024px) {
+  .comments-grid {
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .comments-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-section,
+  .comments-section {
+    padding: 3rem 0;
+  }
+
+  .section-subtitle {
+    margin-bottom: 2rem;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .sort-dropdown {
+    width: 100%;
+  }
+
+  .comment-card {
+    padding: 1.5rem;
+  }
+
+  .card-header {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .status-message {
+    padding: 4rem 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-section,
+  .comments-section {
+    padding: 2rem 0;
+  }
+
+  .discussion-form {
+    gap: 1.5rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+
+  .char-counter {
+    text-align: center;
+    order: 2;
+  }
+
+  .submit-btn {
+    width: 100%;
+    order: 1;
+  }
+
+  .comment-card {
+    padding: 1.25rem;
+  }
+
+  .card-actions {
+    gap: 0.5rem;
+  }
+}

@@ -5,25 +5,29 @@ import './styles/globals.css'
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
-import CustomerDashboard from './pages/CustomerDashboard'
-import CustomerDiscussion from './pages/CustomerDiscussion'
-import FollowedVendors from './pages/FollowedVendors'
-import VendorMapPage from './pages/VendorMapPage'
-import VendorDashboard from './pages/VendorDashboard'
-import VendorProfile from './pages/VendorProfile'
-import VendorMenu from './pages/VendorMenu'
-import VendorMenuPublic from './pages/VendorMenuPublic'
-import VendorLocation from './pages/VendorLocation'
-import VendorLocationMap from './pages/VendorLocationMap'
-import VendorBroadcast from './pages/VendorBroadcast'
-import VendorBroadcastMessages from './pages/VendorBroadcastMessages'
-import VendorDiscussions from './pages/VendorDiscussions'
-import VendorRatings from './pages/VendorRatings'
+import AboutUs from './pages/AboutUs'
+import Contact from './pages/Contact'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsOfService from './pages/TermsOfService'
+import CustomerDashboard from './pages/customer/CustomerDashboard'
+import CustomerDiscussion from './pages/customer/CustomerDiscussion'
+import FollowedVendors from './pages/customer/FollowedVendors'
+import VendorMapPage from './pages/customer/VendorMapPage'
+import VendorDashboard from './pages/vendor/VendorDashboard'
+import VendorProfile from './pages/vendor/VendorProfile'
+import VendorMenu from './pages/vendor/VendorMenu'
+import VendorMenuPublic from './pages/customer/VendorMenuPublic'
+import VendorLocation from './pages/vendor/VendorLocation'
+import VendorLocationMap from './pages/customer/VendorLocationMap'
+import VendorBroadcast from './pages/vendor/VendorBroadcast'
+import VendorBroadcastMessages from './pages/customer/VendorBroadcastMessages'
+import VendorDiscussions from './pages/vendor/VendorDiscussions'
+import VendorRatings from './pages/vendor/VendorRatings'
 import UnauthorizedPage from './pages/UnauthorizedPage'
-import SearchResultsPage from './pages/SearchResultsPage'
+import SearchResultsPage from './pages/customer/SearchResultsPage'
 // Import the new VendorDetail page
-import VendorDetail from './pages/VendorDetail'  // Add this import
-import FollowedVendorsDetail from './pages/FollowedVendorsDetail'
+import VendorDetail from './pages/customer/VendorDetail'  // Add this import
+import FollowedVendorsDetail from './pages/customer/FollowedVendorsDetail'
 // Import our components
 import ProtectedRoute from './components/ProtectedRoute'
 
@@ -33,7 +37,10 @@ function App() {
       <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
-      <Route path="/about" element={<h1>About Page</h1>} />
+      <Route path="/about" element={<AboutUs />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/privacy" element={<PrivacyPolicy />} />
+      <Route path="/terms" element={<TermsOfService />} />
       <Route path="/unauthorized" element={<UnauthorizedPage />} />
       
       {/* Protected Routes */}

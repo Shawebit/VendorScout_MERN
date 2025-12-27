@@ -1,15 +1,19 @@
 .simple-register-form {
+  width: 100%;
 }
 
 /* Error Message */
 .error-message {
-  padding: var(--spacing-3);
-  background-color: #fee2e2;
-  color: #b91c1c;
-  border-radius: var(--radius-md);
+  padding: var(--spacing-4);
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  color: #000000;
+  border-radius: 0;
   font-size: var(--font-size-sm);
+  box-shadow: none;
   margin-bottom: var(--spacing-4);
   text-align: center;
+  font-weight: 300;
 }
 
 /* Register Form */
@@ -18,36 +22,45 @@
 }
 
 .form-fields {
+  margin-top: var(--spacing-6);
   margin-bottom: var(--spacing-6);
 }
 
 .form-field {
-  margin-bottom: var(--spacing-4);
+  margin-bottom: var(--spacing-6);
 }
 
 .form-input {
   width: 100%;
-  padding: var(--spacing-3);
+  padding: var(--spacing-4);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border-radius: 0;
   font-size: var(--font-size-base);
-  background-color: var(--color-white);
+  background-color: #ffffff;
+  box-shadow: none;
+  font-weight: 300;
+  transition: all 0.3s ease;
 }
 
 .form-input:focus {
-  outline: none;
-  border-color: var(--color-dark-grey);
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+  outline: 2px solid var(--color-black);
+  outline-offset: -2px;
+  border-color: var(--color-black);
+  box-shadow: none;
 }
 
 .form-input.error {
-  border-color: #ef4444;
+  border-color: #000000;
+  outline: 2px solid #000000;
+  outline-offset: -2px;
 }
 
 .field-error {
   margin-top: var(--spacing-2);
   font-size: var(--font-size-sm);
-  color: #ef4444;
+  color: #000000;
+  opacity: 0.7;
+  font-weight: 300;
 }
 
 /* Role Selection */
@@ -58,8 +71,9 @@
 .role-options {
   display: flex;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border-radius: 0;
   overflow: hidden;
+  box-shadow: none;
 }
 
 .role-option {
@@ -67,14 +81,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-3);
+  padding: var(--spacing-4);
   cursor: pointer;
   position: relative;
+  background-color: #ffffff;
+  color: var(--color-medium-grey);
+  font-weight: 300;
+  transition: all 0.3s ease;
 }
 
 .role-option.active {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: #000000;
+  color: #ffffff;
+  font-weight: 300;
 }
 
 .role-radio {
@@ -85,8 +104,9 @@
 }
 
 .role-label {
-  font-size: var(--font-size-sm);
-  font-weight: 500;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 /* Form Submit */
@@ -96,9 +116,23 @@
 
 .submit-btn {
   width: 100%;
-  padding: var(--spacing-3);
+  padding: var(--spacing-5);
   font-size: var(--font-size-base);
-  font-weight: 500;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-black);
+  background: var(--color-black);
+  color: var(--color-white);
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: var(--color-white);
+  color: var(--color-black);
+  border-color: var(--color-black);
 }
 
 /* Responsive adjustments */
@@ -109,5 +143,13 @@
   
   .role-option:first-child {
     border-bottom: 1px solid var(--color-border);
+  }
+  
+  .form-input {
+    padding: var(--spacing-3);
+  }
+  
+  .submit-btn {
+    padding: var(--spacing-3);
   }
 }

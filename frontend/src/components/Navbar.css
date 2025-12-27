@@ -2,10 +2,10 @@
   position: sticky;
   top: 0;
   z-index: var(--z-sticky);
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: var(--shadow-md);
-  padding: var(--spacing-4) 0;
+  background-color: var(--color-white);
+  backdrop-filter: none;
+  padding: var(--spacing-5) 0;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .navbar-container {
@@ -16,11 +16,12 @@
 
 .navbar-brand .navbar-logo {
   font-size: var(--font-size-2xl);
-  font-weight: 800;
+  font-weight: 300;
   color: var(--color-black);
   cursor: pointer;
   margin: 0;
-  letter-spacing: -0.025em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .navbar-menu {
@@ -30,48 +31,65 @@
 
 .navbar-auth {
   display: flex;
-  gap: var(--spacing-3);
+  gap: var(--spacing-4);
 }
 
 .navbar-auth .btn {
-  min-width: 100px;
-  padding: var(--spacing-2) var(--spacing-4);
+  min-width: 120px;
+  padding: var(--spacing-3) var(--spacing-5);
   font-size: var(--font-size-sm);
+  border-radius: 0;
+  border: 1px solid var(--color-black);
+  background: var(--color-black);
+  color: var(--color-white);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .navbar-user {
   display: flex;
   align-items: center;
-  gap: var(--spacing-4);
+  gap: var(--spacing-5);
 }
 
 .navbar-username {
-  font-weight: 500;
-  color: var(--color-dark-grey);
+  font-weight: 300;
+  color: var(--color-black);
   font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .navbar-logout {
-  min-width: 100px;
-  padding: var(--spacing-2) var(--spacing-4);
+  min-width: 120px;
+  padding: var(--spacing-3) var(--spacing-5);
   font-size: var(--font-size-sm);
+  border-radius: 0;
+  border: 1px solid var(--color-black);
+  background: var(--color-black);
+  color: var(--color-white);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .navbar-container {
     flex-direction: column;
-    gap: var(--spacing-4);
+    gap: var(--spacing-5);
   }
   
   .navbar-auth {
     width: 100%;
     justify-content: center;
+    gap: var(--spacing-3);
   }
   
   .navbar-user {
     flex-direction: column;
-    gap: var(--spacing-3);
+    gap: var(--spacing-4);
     text-align: center;
   }
 }

@@ -1,14 +1,20 @@
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import './VendorMap.css';
 
-// Create a custom red dot icon
-const redDotIcon = L.divIcon({
-  className: 'custom-red-dot',
-  html: '<div style="background-color: red; width: 16px; height: 16px; border-radius: 50%;"></div>',
-  iconSize: [16, 16],
-  iconAnchor: [8, 8],
-  popupAnchor: [0, -8]
+// Create a custom Google-style pin icon
+const customMarkerIcon = L.divIcon({
+  className: 'custom-vendor-marker',
+  html: `<div class="marker-pin">
+          <div class="pin-head"></div>
+          <div class="pin-point"></div>
+         </div>`,
+  iconSize: [30, 42],
+  iconAnchor: [15, 42],
+  popupAnchor: [0, -42]
 });
 
 // Fix default marker icon issue
@@ -20,6 +26,8 @@ L.Icon.Default.mergeOptions({
 });
 
 export default function VendorMap({ vendors }) {
+  const navigate = useNavigate();
+
   // Calculate center based on vendor coordinates
   const getMapCenter = () => {
     if (vendors.length > 0) {
@@ -35,43 +43,64 @@ export default function VendorMap({ vendors }) {
     return [20.5937, 78.9629];
   };
 
+  const handleViewVendor = (vendorId) => {
+    navigate(`/customer/vendor/${vendorId}`);
+  };
+
   return (
-    <div style={{ height: '500px', width: '100%' }}>
-      <MapContainer
-        center={getMapCenter()}
-        zoom={13}
-        style={{ height: '100%', width: '100%' }}
-      >
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution="&copy; <a href=&quot;https://www.openstreetmap.org/copyright&quot;>OpenStreetMap</a> contributors"
-        />
+    <div className="vendor-map-wrapper">
+      <div className="leaflet-map-container">
+        <MapContainer
+          center={getMapCenter()}
+          zoom={13}
+          style={{ height: '100%', width: '100%' }}
+          className="minimalist-map"
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution="&copy; <a href=&quot;https://www.openstreetmap.org/copyright&quot;>OpenStreetMap</a> contributors"
+            className="grayscale-tiles"
+          />
 
-        {vendors.map((vendor) => {
-          // Vendor must have coordinates: { type: "Point", coordinates: [lng, lat] }
-          if (!vendor.location?.coordinates) return null;
+          {vendors.map((vendor) => {
+            // Vendor must have coordinates: { type: "Point", coordinates: [lng, lat] }
+            if (!vendor.location?.coordinates) return null;
 
-          const [lng, lat] = vendor.location.coordinates;
+            const [lng, lat] = vendor.location.coordinates;
 
-          return (
-            <Marker 
-              key={vendor._id} 
-              position={[lat, lng]}
-              icon={redDotIcon}
-            >
-              <Popup>
-                <strong>{vendor.businessName}</strong><br />
-                {vendor.phoneNumber && (
-                  <span>{vendor.phoneNumber}<br /></span>
-                )}
-                {vendor.status && (
-                  <span>Status: {vendor.status.charAt(0).toUpperCase() + vendor.status.slice(1)}<br /></span>
-                )}
-              </Popup>
-            </Marker>
-          );
-        })}
-      </MapContainer>
+            return (
+              <Marker 
+                key={vendor._id} 
+                position={[lat, lng]}
+                icon={customMarkerIcon}
+              >
+                <Popup className="custom-popup">
+                  <div className="popup-content">
+                    <h3 className="popup-title">{vendor.businessName}</h3>
+                    {vendor.cuisineType && (
+                      <p className="popup-cuisine">{vendor.cuisineType}</p>
+                    )}
+                    {vendor.phoneNumber && (
+                      <p className="popup-phone">{vendor.phoneNumber}</p>
+                    )}
+                    {vendor.status && (
+                      <span className={`popup-status status-${vendor.status}`}>
+                        {vendor.status.charAt(0).toUpperCase() + vendor.status.slice(1)}
+                      </span>
+                    )}
+                    <button 
+                      className="popup-view-btn"
+                      onClick={() => handleViewVendor(vendor._id)}
+                    >
+                      View Vendor Page
+                    </button>
+                  </div>
+                </Popup>
+              </Marker>
+            );
+          })}
+        </MapContainer>
+      </div>
     </div>
   );
 }

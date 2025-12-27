@@ -34,7 +34,23 @@ const createVendorProfile = async (req, res) => {
     
     // Validate image count
     if (images && images.length > 5) {
-      return res.status(400).json({ message: 'You can only upload up to 5 images' });
+      return res.status(400).json({ message: 'You can only have up to 5 images' });
+    }
+    
+    // Validate image URLs if provided
+    if (images) {
+      for (let i = 0; i < images.length; i++) {
+        const image = images[i];
+        if (!image.url || typeof image.url !== 'string') {
+          return res.status(400).json({ message: 'Each image must have a valid URL' });
+        }
+        // Basic URL validation
+        try {
+          new URL(image.url);
+        } catch (err) {
+          return res.status(400).json({ message: `Invalid image URL: ${image.url}` });
+        }
+      }
     }
     
     // Create vendor profile
@@ -107,8 +123,23 @@ const updateVendorProfile = async (req, res) => {
     // Handle images - limit to 5 images
     if (images !== undefined) {
       if (images.length > 5) {
-        return res.status(400).json({ message: 'You can only upload up to 5 images' });
+        return res.status(400).json({ message: 'You can only have up to 5 images' });
       }
+      
+      // Validate image URLs
+      for (let i = 0; i < images.length; i++) {
+        const image = images[i];
+        if (!image.url || typeof image.url !== 'string') {
+          return res.status(400).json({ message: 'Each image must have a valid URL' });
+        }
+        // Basic URL validation
+        try {
+          new URL(image.url);
+        } catch (err) {
+          return res.status(400).json({ message: `Invalid image URL: ${image.url}` });
+        }
+      }
+      
       vendor.images = images;
     }
     
