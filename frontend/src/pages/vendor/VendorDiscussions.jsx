@@ -118,10 +118,10 @@ const VendorDiscussions = () => {
     return (
       <div className="vendor-dashboard">
         {/* Navigation Bar */}
-        <nav style={{ padding: '1rem', backgroundColor: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.1)', marginBottom: '1rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <h1 onClick={() => navigate('/vendor/dashboard')} style={{ cursor: 'pointer', fontSize: '1.5rem', fontWeight: 'bold' }}>VendorScout</h1>
-            <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <nav className="vendor-navbar">
+          <div className="vendor-navbar-container">
+            <h1 onClick={() => navigate('/vendor/dashboard')} className="vendor-navbar-logo">VendorScout</h1>
+            <div className="vendor-navbar-menu">
               <button 
                 onClick={() => navigate('/vendor/profile')}
                 className="btn-vendor secondary"
@@ -148,7 +148,7 @@ const VendorDiscussions = () => {
               </button>
               <button 
                 onClick={() => navigate('/vendor/discussions')}
-                className="btn-vendor secondary"
+                className="btn-vendor"
               >
                 Discussions
               </button>
@@ -177,10 +177,10 @@ const VendorDiscussions = () => {
   return (
     <div className="vendor-dashboard">
       {/* Navigation Bar */}
-      <nav style={{ padding: '1rem', backgroundColor: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.1)', marginBottom: '1rem', borderBottom: '1px solid #000000' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <h1 onClick={() => navigate('/vendor/dashboard')} style={{ cursor: 'pointer', fontSize: '1.5rem', fontWeight: 'bold' }}>VendorScout</h1>
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
+      <nav className="vendor-navbar">
+        <div className="vendor-navbar-container">
+          <h1 onClick={() => navigate('/vendor/dashboard')} className="vendor-navbar-logo">VendorScout</h1>
+          <div className="vendor-navbar-menu">
             <button 
               onClick={() => navigate('/vendor/profile')}
               className="btn-vendor secondary"
