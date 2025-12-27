@@ -57,7 +57,7 @@ Preview the production build locally.
 
 ## API Integration
 
-The frontend connects to the backend API running on `http://localhost:5000/api`.
+The frontend connects to the backend API running on `https://vendorscout.onrender.com`.
 
 Authentication is handled via JWT tokens stored in localStorage.
 

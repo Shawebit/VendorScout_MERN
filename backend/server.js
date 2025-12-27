@@ -23,7 +23,9 @@ app.use(helmet()); // Security headers
 
 // CORS configuration for production
 const allowedOrigins = [
-  process.env.FRONTEND_URL
+  process.env.FRONTEND_URL,
+  'http://localhost:5173',
+  'http://localhost:3000'
 ].filter(Boolean); // Remove undefined values
 
 const corsOptions = {
@@ -31,7 +33,7 @@ const corsOptions = {
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
     
-    if (allowedOrigins.length === 0 || allowedOrigins.indexOf(origin) !== -1) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !process.env.FRONTEND_URL) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
@@ -46,22 +48,17 @@ app.use(morgan('clean')); // Clean logging
 app.use(express.json()); // Parse JSON bodies
 
 // Routes
-app.use('/auth', authRoutes);
-app.use('/vendors', vendorRoutes);
-app.use('/comments', commentRoutes);
-app.use('/users', userRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/vendors', vendorRoutes);
+app.use('/api/comments', commentRoutes);
+app.use('/api/users', userRoutes);
 
 app.get('/', (req, res) => {
   res.json({ message: 'Street Food Tracker API' });
 });
 
 // Connect to MongoDB
-if (!process.env.MONGODB_URI) {
-  console.error('MONGODB_URI environment variable is not set');
-  process.exit(1);
-}
-
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/streetfoodtracker')
 .then(() => {
   console.log('Connected to MongoDB');
 })
