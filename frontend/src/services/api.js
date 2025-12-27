@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create an axios instance
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api', // Assuming backend runs on port 5000
+  baseURL: 'hthttps://vendorscout.onrender.com', // Assuming backend runs on port 5000
   headers: {
     'Content-Type': 'application/json',
   },
